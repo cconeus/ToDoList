@@ -15,16 +15,15 @@
 
       $output = "";
 
-      $all_tasks = Task::getAll();
 
-      if (!empty($all_tasks)) {
+      if (!empty(Task::getAll())) {
         $output .= "
             <h1>To Do list</h1>
             <p>Here are all your tasks:</p>
             ";
       }
 
-      foreach ($all_tasks as $task) {
+      foreach (Task::getAll() as $task) {
         $output = $output . "<p>" . $task->getDescription() . "</p>";
       }
 
