@@ -13,15 +13,13 @@
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array (
         'twig.path' =>__DIR__.'/../views'
-      ));
+
+    ));
 
     $app->get("/", function() use ($app) {
-
-
       return $app['twig']->render('tasks.html.twig', array('tasks' => Task::getAll()));
 
     });
-
 
     $app->post("/tasks", function() use ($app) {
         $task = new Task($_POST['description']);
@@ -33,6 +31,7 @@
     $app->post("/delete_tasks", function() use ($app) {
         Task::deleteAll();
         return $app['twig']->render('delete_tasks.html.twig');
+
     });
 
     return $app;
